@@ -1,0 +1,53 @@
+﻿@model TeChineoTuLomito.WebApplication.Models.Empleado
+
+@{
+    ViewData["Title"] = "Insertar Empleado";
+}
+
+<h1>Insertar</h1>
+
+<h4>Empleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Cedula" class="control-label"></label>
+                <input asp-for="Cedula" class="form-control" />
+                <span asp-validation-for="Cedula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input type="date" asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaIngreso" class="control-label"></label>
+                <input type="date" asp-for="FechaIngreso" class="form-control" />
+                <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalarioDiario" class="control-label"></label>
+                <input asp-for="SalarioDiario" class="form-control" />
+                <span asp-validation-for="SalarioDiario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoEmpleado" class="control-label"></label>
+                <input asp-for="TipoEmpleado" class="form-control" />
+                <span asp-validation-for="TipoEmpleado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Insertar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a lista de empleadost</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

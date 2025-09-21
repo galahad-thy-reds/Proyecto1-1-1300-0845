@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TeChineoTuLomito.WebApplication.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalarioDiario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRetiro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoEmpleado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalarioDiario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRetiro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoEmpleado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { cedula = item.Cedula }) |
+                @Html.ActionLink("Details", "Details", new { cedula = item.Cedula }) |
+                @Html.ActionLink("Delete", "Delete", new { cedula = item.Cedula })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

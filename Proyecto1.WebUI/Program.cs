@@ -1,7 +1,10 @@
+using Proyecto1.WebUI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IEmpleadoServicio, EmpleadoServicio>();
 
 var app = builder.Build();
 
