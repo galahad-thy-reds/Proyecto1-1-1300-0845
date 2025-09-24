@@ -1,4 +1,7 @@
-﻿namespace Proyecto1.WebUI.Models
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace Proyecto1.WebUI.Models
 {
     public class Cliente
     {
@@ -6,6 +9,7 @@
         /// <summary>
         /// Cedula del Cliente
         /// </summary>
+        [Required]
         public string? Cedula { get; set; }
         /// <summary>
         /// Nombre completo del cliente
@@ -34,6 +38,7 @@
         /// <summary>
         /// Metodo de contacto preferido del cliente (llamada, mensaje WhatsApp)
         /// </summary>
+        [DisplayName("Contacto Preferido")]
         public string? ContactoPreferido { get; set; }
         #endregion
     }

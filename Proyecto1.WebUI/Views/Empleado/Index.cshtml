@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TeChineoTuLomito.WebApplication.Models.Empleado>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Empleados";
 }
 
 <h1>Index</h1>
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.TipoEmpleado)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { cedula = item.Cedula }) |
-                @Html.ActionLink("Details", "Details", new { cedula = item.Cedula }) |
-                @Html.ActionLink("Delete", "Delete", new { cedula = item.Cedula })
+                @Html.ActionLink("Editar", "Edit", new { cedula = item.Cedula }) |
+                @Html.ActionLink("Detalles", "Details", new { cedula = item.Cedula }) |
+                @Html.ActionLink("Eliminar", "Delete", new { cedula = item.Cedula })
             </td>
         </tr>
 }

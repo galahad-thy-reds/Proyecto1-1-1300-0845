@@ -6,7 +6,9 @@ namespace Proyecto1.WebUI.Services
     public class EmpleadoServicio : IEmpleadoServicio
     {
         private readonly List<Empleado> _empleados = new List<Empleado>();
-
+        /// <summary>
+        /// Constructor que inicializa la lista de empleados con un empleado de ejemplo.
+        /// </summary>
         public EmpleadoServicio()
         {
             _empleados.Add(new Empleado
@@ -19,37 +21,53 @@ namespace Proyecto1.WebUI.Services
                 TipoEmpleado = "Veterinario"
             });
         }
-
+        /// <summary>
+        /// Metodo para actualizar un Empleado existente en la lista.
+        /// </summary>
+        /// <param name="empleado"></param>
         public void Actualizar(Empleado empleado)
         {
-            var empleadoNuevo = Buscar(empleado.Cedula);
-            if (empleadoNuevo != null)
+            var empleadoActual = Buscar(empleado.Cedula);
+            if (empleadoActual != null)
             {
-                empleadoNuevo.Cedula = empleado.Cedula;
-                empleadoNuevo.FechaNacimiento = empleado.FechaNacimiento;
-                empleadoNuevo.FechaIngreso = empleado.FechaIngreso;
-                empleadoNuevo.SalarioDiario = empleado.SalarioDiario;
-                empleadoNuevo.FechaRetiro = empleado.FechaRetiro;
-                empleadoNuevo.TipoEmpleado = empleado.TipoEmpleado;
+                empleadoActual.Cedula = empleado.Cedula;
+                empleadoActual.FechaNacimiento = empleado.FechaNacimiento;
+                empleadoActual.FechaIngreso = empleado.FechaIngreso;
+                empleadoActual.SalarioDiario = empleado.SalarioDiario;
+                empleadoActual.FechaRetiro = empleado.FechaRetiro;
+                empleadoActual.TipoEmpleado = empleado.TipoEmpleado;
             }
         }
-
+        /// <summary>
+        /// Metodo para buscar un Empleado por su cedula.
+        /// </summary>
+        /// <param name="cedula"></param>
+        /// <returns></returns>
         public Empleado Buscar(string cedula)
         {
             Empleado empleado = _empleados.FirstOrDefault(e => e.Cedula.Equals(cedula));
             return empleado;
         }
-
+        /// <summary>
+        /// Metodo para eliminar un Empleado de la lista.
+        /// </summary>
+        /// <param name="empleado"></param>
         public void Eliminar(Empleado empleado)
         {
             _empleados.Remove(empleado);
         }
-
+        /// <summary>
+        /// Metodo para insertar un nuevo Empleado en la lista.
+        /// </summary>
+        /// <param name="empleado"></param>
         public void Insertar(Empleado empleado)
         {
             _empleados.Add(empleado);
         }
-
+        /// <summary>
+        /// Metodo para listar todos los Empleados en la lista.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Empleado> Listar()
         {
             return _empleados;
