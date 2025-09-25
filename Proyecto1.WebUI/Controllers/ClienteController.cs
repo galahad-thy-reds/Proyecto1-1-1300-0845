@@ -8,13 +8,12 @@ namespace Proyecto1.WebUI.Controllers
     public class ClienteController : Controller
     {
         private readonly IClienteServicio _clienteServicio;
-        // GET: ClienteController
 
         public ClienteController(IClienteServicio clienteServicio)
         {
             _clienteServicio = clienteServicio;
         }
-
+        // GET: ClienteController
         public ActionResult Index()
         {
             return View(_clienteServicio.Listar());

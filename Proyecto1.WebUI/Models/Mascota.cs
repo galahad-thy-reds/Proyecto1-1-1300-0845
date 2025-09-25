@@ -1,4 +1,6 @@
-﻿namespace Proyecto1.WebUI.Models
+﻿using System.ComponentModel;
+
+namespace Proyecto1.WebUI.Models
 {
     public class Mascota
     {
@@ -6,6 +8,7 @@
         /// <summary>
         /// Cedula del dueño de la mascota
         /// </summary>
+        [DisplayName("Cedula de Contacto")]
         public string? CedulaContacto { get; set; }
         /// <summary>
         /// Especie de la mascota (caballo, perro, gato, pez, cabra, conejo, vaca, cerdo, roedor, serpiente, otro.)
@@ -26,14 +29,17 @@
         /// <summary>
         /// Fecha de la ultima atencion de la mascota
         /// </summary>
-        public DateTime? UltimaAtencion { get; set; }
+        [DisplayName("Fecha de utlima atencion")]
+        public DateOnly? UltimaAtencion { get; set; }
         /// <summary>
         /// Telefono de contacto del dueño de la mascota
         /// </summary>
+        [DisplayName("Telefono de Contacto")]
         public string? TelefonoContacto { get; set; }
         /// <summary>
         /// Correo electronico del dueño de la mascota
         /// </summary>
+        [DisplayName("Correo electronico de Contacto")]
         public string? CorreoContacto { get; set; }
         #endregion
     }

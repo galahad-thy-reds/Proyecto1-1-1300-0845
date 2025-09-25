@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Proyecto1.WebUI.Models.Mascota>
+
+@{
+    ViewData["Title"] = "Lista Mascotas";
+}
+
+<h1>Lista de Mascota</h1>
+
+<p>
+    <a asp-action="Create">Agregar Mascota</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CedulaContacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UltimaAtencion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefonoContacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorreoContacto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedulaContacto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UltimaAtencion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoContacto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoContacto)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new { cedulaContacto = item.CedulaContacto }) |
+                    @Html.ActionLink("Detalles", "Details", new { cedulaContacto = item.CedulaContacto }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { cedulaContacto = item.CedulaContacto })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

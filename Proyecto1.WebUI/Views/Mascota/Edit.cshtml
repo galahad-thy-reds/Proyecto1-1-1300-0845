@@ -1,0 +1,68 @@
+﻿@model Proyecto1.WebUI.Models.Mascota
+
+@{
+    ViewData["Title"] = "Editar Mascota";
+}
+
+<h1>Editar Mascota</h1>
+
+<h4>Mascota</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CedulaContacto" class="control-label"></label>
+                <input asp-for="CedulaContacto" class="form-control" />
+                <span asp-validation-for="CedulaContacto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Especie" class="control-label"></label>
+                <input asp-for="Especie" class="form-control" />
+                <span asp-validation-for="Especie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Raza" class="control-label"></label>
+                <input asp-for="Raza" class="form-control" />
+                <span asp-validation-for="Raza" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Edad" class="control-label"></label>
+                <input asp-for="Edad" class="form-control" />
+                <span asp-validation-for="Edad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UltimaAtencion" class="control-label"></label>
+                <input type="date" asp-for="UltimaAtencion" class="form-control" />
+                <span asp-validation-for="UltimaAtencion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelefonoContacto" class="control-label"></label>
+                <input asp-for="TelefonoContacto" class="form-control" />
+                <span asp-validation-for="TelefonoContacto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CorreoContacto" class="control-label"></label>
+                <input asp-for="CorreoContacto" class="form-control" />
+                <span asp-validation-for="CorreoContacto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista de mascotas</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

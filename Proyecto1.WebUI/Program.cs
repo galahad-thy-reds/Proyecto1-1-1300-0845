@@ -4,8 +4,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// Inyeccion de dependencias para los servicios
 builder.Services.AddSingleton<IEmpleadoServicio, EmpleadoServicio>();
 builder.Services.AddSingleton<IClienteServicio, ClienteServicio>();
+builder.Services.AddSingleton<IMascotaServicio, MascotaServicio>();
 
 var app = builder.Build();
 
