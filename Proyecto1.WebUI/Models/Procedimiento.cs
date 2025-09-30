@@ -45,7 +45,7 @@ namespace Proyecto1.WebUI.Models
         {
             if (TipoProcedimiento is not null)
             {
-                return TipoProcedimiento.Precio * 1.15;
+                return TipoProcedimiento.Precio * 1.13;
             }
 
             return 0;

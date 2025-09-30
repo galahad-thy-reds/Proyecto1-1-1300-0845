@@ -24,7 +24,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: ProcedimientoController/Details/5
         public ActionResult Details(string id)
         {
-            return View(_procedimientoServicio.Buscar(id));
+            return View(_procedimientoServicio.ObtenerProcedimiento(id));
         }
 
         // GET: ProcedimientoController/Create
@@ -65,7 +65,7 @@ namespace Proyecto1.WebUI.Controllers
         public ActionResult Edit(string id)
         {
             ViewBag.TiposDeProcedimientos = new SelectList(_tipoProcedimientoServicio.Listar(), "Nombre", "Nombre");
-            return View(_procedimientoServicio.Buscar(id));
+            return View(_procedimientoServicio.ObtenerProcedimiento(id));
         }
 
         // POST: ProcedimientoController/Edit/5
@@ -98,7 +98,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: ProcedimientoController/Delete/5
         public ActionResult Delete(string id)
         {
-            var procedimiento = _procedimientoServicio.Buscar(id);
+            var procedimiento = _procedimientoServicio.ObtenerProcedimiento(id);
             _procedimientoServicio.Eliminar(procedimiento);
             return View(procedimiento);
         }
@@ -115,6 +115,22 @@ namespace Proyecto1.WebUI.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        // POST: ProcedimientoController/Search/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search(string criterioBusqueda)
+        {
+            try
+            {
+                var resultados = _procedimientoServicio.Buscar(criterioBusqueda);
+                return View("Index", resultados);
+            }
+            catch
+            {
+                return View("Index", _procedimientoServicio.Listar());
             }
         }
     }

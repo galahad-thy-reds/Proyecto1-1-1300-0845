@@ -27,7 +27,7 @@ namespace Proyecto1.WebUI.Services
         /// <param name="empleado"></param>
         public void Actualizar(Empleado empleado)
         {
-            var empleadoActual = Buscar(empleado.Cedula);
+            var empleadoActual = ObtenerEmpleado(empleado.Cedula);
             if (empleadoActual != null)
             {
                 empleadoActual.Cedula = empleado.Cedula;
@@ -43,9 +43,9 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <param name="cedula"></param>
         /// <returns></returns>
-        public Empleado Buscar(string cedula)
+        public Empleado ObtenerEmpleado(string cedula)
         {
-            Empleado empleado = _empleados.FirstOrDefault(e => e.Cedula.Equals(cedula));
+            Empleado empleado = _empleados.FirstOrDefault(e => e.Cedula!.Equals(cedula))!;
             return empleado;
         }
         /// <summary>
@@ -71,6 +71,18 @@ namespace Proyecto1.WebUI.Services
         public IEnumerable<Empleado> Listar()
         {
             return _empleados;
+        }
+        /// <summary>
+        /// Metodo para buscar clientes por cedula o tipo de empleado, de acuerdo a un criterio de busqueda.
+        /// </summary>
+        /// <param name="criterioBusqueda"></param>
+        /// <returns></returns>
+        public IEnumerable<Empleado> Buscar(string criterioBusqueda)
+        {
+            if(string.IsNullOrWhiteSpace(criterioBusqueda))
+                return _empleados;
+            else
+                return _empleados.Where(e => e.Cedula!.Contains(criterioBusqueda) || e.TipoEmpleado!.Contains(criterioBusqueda));
         }
     }
 }

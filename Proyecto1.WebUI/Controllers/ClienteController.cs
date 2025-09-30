@@ -22,7 +22,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: ClienteController/Details/5
         public ActionResult Details(string cedula)
         {
-            var cliente = _clienteServicio.Buscar(cedula);
+            var cliente = _clienteServicio.ObtenerCliente(cedula);
             return View(cliente);
         }
 
@@ -51,7 +51,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: ClienteController/Edit/5
         public ActionResult Edit(string cedula)
         {
-            var cliente = _clienteServicio.Buscar(cedula);
+            var cliente = _clienteServicio.ObtenerCliente(cedula);
             return View(cliente);
         }
 
@@ -74,7 +74,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: ClienteController/Delete/5
         public ActionResult Delete(string cedula)
         {
-            var cliente = _clienteServicio.Buscar(cedula);
+            var cliente = _clienteServicio.ObtenerCliente(cedula);
             return View(cliente);
         }
 
@@ -85,13 +85,29 @@ namespace Proyecto1.WebUI.Controllers
         {
             try
             {
-                var cliente = _clienteServicio.Buscar(cedula);
+                var cliente = _clienteServicio.ObtenerCliente(cedula);
                 _clienteServicio.Eliminar(cliente);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
+            }
+        }
+
+        // POST> ClienteController/Search/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search(string criterioBusqueda)
+        {
+            try
+            {
+                var clientes = _clienteServicio.Buscar(criterioBusqueda);
+                return View("Index", clientes);
+            }
+            catch
+            {
+                return View("Index", _clienteServicio.Listar());
             }
         }
     }

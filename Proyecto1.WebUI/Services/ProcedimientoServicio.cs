@@ -31,7 +31,7 @@ namespace Proyecto1.WebUI.Services
         /// <param name="procedimiento"></param>
         public void Actualizar(Procedimiento procedimiento)
         {
-            var procedimientoActual = Buscar(procedimiento.Id!);
+            var procedimientoActual = ObtenerProcedimiento(procedimiento.Id!);
 
             if (procedimientoActual != null)
             {
@@ -46,7 +46,7 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <param name="cedulaContacto"></param>
         /// <returns>Procedimiento </returns>
-        public Procedimiento Buscar(string criterioBusqueda)
+        public Procedimiento ObtenerProcedimiento(string criterioBusqueda)
         {
             var procedimiento = _procedimientos.FirstOrDefault(p => p.Id.Contains(criterioBusqueda))!;
             return procedimiento;
@@ -74,6 +74,15 @@ namespace Proyecto1.WebUI.Services
         public IEnumerable<Procedimiento> Listar()
         {
             return _procedimientos;
+        }
+
+        public IEnumerable<Procedimiento> Buscar(string criterioBusqueda)
+        {
+            if (string.IsNullOrWhiteSpace(criterioBusqueda))
+                return _procedimientos;
+            else
+                return _procedimientos.Where(p => p.CedulaContacto!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase) ||
+                                                  p.NombreMascota!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: MascotaController/Details/5
         public ActionResult Details(string cedulaContacto)
         {
-            var mascota = _mascotaServicio.Buscar(cedulaContacto);
+            var mascota = _mascotaServicio.ObtenerMascota(cedulaContacto);
             return View(mascota);
         }
 
@@ -51,7 +51,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: MascotaController/Edit/5
         public ActionResult Edit(string cedulaContacto)
         {
-            var mascota = _mascotaServicio.Buscar(cedulaContacto);
+            var mascota = _mascotaServicio.ObtenerMascota(cedulaContacto);
             return View(mascota);
         }
 
@@ -74,7 +74,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: MascotaController/Delete/5
         public ActionResult Delete(string cedulaContacto)
         {
-            var mascota = _mascotaServicio.Buscar(cedulaContacto);
+            var mascota = _mascotaServicio.ObtenerMascota(cedulaContacto);
             return View(mascota);
         }
 
@@ -85,9 +85,25 @@ namespace Proyecto1.WebUI.Controllers
         {
             try
             {
-                var mascota = _mascotaServicio.Buscar(cedulaContacto);
+                var mascota = _mascotaServicio.ObtenerMascota(cedulaContacto);
                 _mascotaServicio.Eliminar(mascota);
                 return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // POST: MascotaController/Search/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search(string criterioBusqueda)
+        {
+            try
+            {
+                var mascota = _mascotaServicio.Buscar(criterioBusqueda);
+                return View("Index", mascota);
             }
             catch
             {

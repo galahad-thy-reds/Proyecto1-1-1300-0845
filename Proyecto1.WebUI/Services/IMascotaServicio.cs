@@ -14,7 +14,7 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <param name="criterio"></param>
         /// <returns></returns>
-        public Mascota Buscar(string criterio);
+        public Mascota ObtenerMascota(string criterio);
         /// <summary>
         /// Metodos para eliminar una mascota de la lista
         /// </summary>
@@ -30,5 +30,11 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Mascota> Listar();
+        /// <summary>
+        /// Metodo para buscar mascotas por un criterio de busqueda
+        /// </summary>
+        /// <param name="criterioBusqueda"></param>
+        /// <returns></returns>
+        public IEnumerable<Mascota> Buscar(string criterioBusqueda);
     }
 }

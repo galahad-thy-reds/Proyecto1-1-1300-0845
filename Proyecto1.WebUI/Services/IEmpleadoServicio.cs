@@ -14,7 +14,7 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <param name="cedula"></param>
         /// <returns></returns>
-        public Empleado Buscar(string cedula);
+        public Empleado ObtenerEmpleado(string cedula);
         /// <summary>
         /// Metodo para eliminar un Empleado de la lista.
         /// </summary>
@@ -30,5 +30,11 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Empleado> Listar();
+        /// <summary>
+        /// Metodo para buscar un Empleado por un criterio de busqueda.
+        /// </summary>
+        /// <param name="criterioBusqueda"></param>
+        /// <returns></returns>
+        public IEnumerable<Empleado> Buscar(string criterioBusqueda);
     }
 }

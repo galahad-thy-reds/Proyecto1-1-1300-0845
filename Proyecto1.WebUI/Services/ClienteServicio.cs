@@ -40,7 +40,7 @@ namespace Proyecto1.WebUI.Services
         /// <exception cref="NotImplementedException"></exception>
         public void Actualizar(Cliente cliente)
         {
-            var clienteActual = Buscar(cliente.Cedula);
+            var clienteActual = ObtenerCliente(cliente.Cedula!);
 
             if(clienteActual != null)
             {
@@ -61,16 +61,15 @@ namespace Proyecto1.WebUI.Services
         /// <param name="cedula"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public Cliente Buscar(string cedula)
+        public Cliente ObtenerCliente(string cedula)
         {
-            Cliente cliente = _clientes.FirstOrDefault(c => c.Cedula.Equals(cedula));
+            Cliente cliente = _clientes.FirstOrDefault(c => c.Cedula!.Equals(cedula))!;
             return cliente;
         }
         /// <summary>
         /// Metodo para eliminar un cliente de la lista.
         /// </summary>
         /// <param name="cliente"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void Eliminar(Cliente cliente)
         {
             _clientes.Remove(cliente);
@@ -79,7 +78,6 @@ namespace Proyecto1.WebUI.Services
         /// Metodod para insertar un nuevo cliente en la lista.
         /// </summary>
         /// <param name="cliente"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void Insertar(Cliente cliente)
         {
             _clientes.Add(cliente);
@@ -88,10 +86,21 @@ namespace Proyecto1.WebUI.Services
         /// Metodo para listar todos los clientes en la lista.
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public IEnumerable<Cliente> Listar()
         {
             return _clientes;
+        }
+        /// <summary>
+        /// Metodo para buscar clientes por nombre o cedula de acuerdo a un criterio de busqueda.
+        /// </summary>
+        /// <param name="criterioBusqueda"></param>
+        /// <returns></returns>
+        public IEnumerable<Cliente> Buscar(string criterioBusqueda)
+        {
+            if (string.IsNullOrWhiteSpace(criterioBusqueda))
+                return _clientes;
+            else
+                return _clientes.Where(c => c.Cedula!.Contains(criterioBusqueda) || c.Nombre!.Contains(criterioBusqueda));
         }
     }
 }

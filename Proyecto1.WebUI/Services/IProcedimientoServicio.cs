@@ -14,21 +14,27 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <param name="cedulaContacto"></param>
         /// <returns></returns>
-        public Procedimiento Buscar(string criterioBusqueda);
+        public Procedimiento ObtenerProcedimiento(string criterioBusqueda);
         /// <summary>
         /// Metodo para eliminar un Procedimiento de la lista.
         /// </summary>
         /// <param name="procedimiento"></param>
         public void Eliminar(Procedimiento procedimiento);
         /// <summary>
-        /// Procedimiento para actualizar un Procedimiento existente en la lista.
+        /// Metodo para actualizar un Procedimiento existente en la lista.
         /// </summary>
         /// <param name="procedimiento"></param>
         public void Actualizar(Procedimiento procedimiento);
         /// <summary>
-        /// Procedimiento para listar todos los Procedimientos en la lista.
+        /// Metodo para listar todos los Procedimientos en la lista.
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Procedimiento> Listar();
+        /// <summary>
+        /// Metodo para buscar Procedimientos por la cedula del contacto o el nombre de la mascota.
+        /// </summary>
+        /// <param name="criterioBusqueda"></param>
+        /// <returns></returns>
+        public IEnumerable<Procedimiento> Buscar(string criterioBusqueda);
     }
 }

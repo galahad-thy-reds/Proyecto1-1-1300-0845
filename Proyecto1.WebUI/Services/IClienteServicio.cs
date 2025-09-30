@@ -10,11 +10,11 @@ namespace Proyecto1.WebUI.Services
         /// <param name="cliente"></param>
         public void Insertar(Cliente cliente);
         /// <summary>
-        /// Metodo para buscar un cliente por su cedula
+        /// Metodo para obtener un cliente por su cedula
         /// </summary>
         /// <param name="cedula"></param>
         /// <returns></returns>
-        public Cliente Buscar(string cedula);
+        public Cliente ObtenerCliente(string cedula);
         /// <summary>
         /// Metodo para eliminar un cliente de la lista
         /// </summary>
@@ -30,5 +30,11 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Cliente> Listar();
+        /// <summary>
+        /// Metodo para buscar clientes por un criterio de busqueda
+        /// </summary>
+        /// <param name="criterioBusqueda"></param>
+        /// <returns></returns>
+        public IEnumerable<Cliente> Buscar(string criterioBusqueda);
     }
 }

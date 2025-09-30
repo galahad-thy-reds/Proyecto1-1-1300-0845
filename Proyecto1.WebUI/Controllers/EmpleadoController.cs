@@ -22,7 +22,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: EmpleadoController/Details/5
         public ActionResult Details(string cedula)
         {
-            var empleado = _empleadoServicio.Buscar(cedula);
+            var empleado = _empleadoServicio.ObtenerEmpleado(cedula);
             return View(empleado);
         }
 
@@ -51,7 +51,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: EmpleadoController/Edit/5
         public ActionResult Edit(string cedula)
         {
-            return View(_empleadoServicio.Buscar(cedula));
+            return View(_empleadoServicio.ObtenerEmpleado(cedula));
         }
 
         // POST: EmpleadoController/Edit/5
@@ -73,7 +73,7 @@ namespace Proyecto1.WebUI.Controllers
         // GET: EmpleadoController/Delete/5
         public ActionResult Delete(string cedula)
         {
-            var empleado = _empleadoServicio.Buscar(cedula);
+            var empleado = _empleadoServicio.ObtenerEmpleado(cedula);
             return View(empleado);
         }
 
@@ -84,13 +84,30 @@ namespace Proyecto1.WebUI.Controllers
         {
             try
             {
-                var empleado = _empleadoServicio.Buscar(cedula);
+                var empleado = _empleadoServicio.ObtenerEmpleado(cedula);
                 _empleadoServicio.Eliminar(empleado);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
+            }
+        }
+
+        // POST: EmpleadoController/Delete/5
+        // POST> ClienteController/Search/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search(string criterioBusqueda)
+        {
+            try
+            {
+                var empleados = _empleadoServicio.Buscar(criterioBusqueda);
+                return View("Index", empleados);
+            }
+            catch
+            {
+                return View("Index", _empleadoServicio.Listar());
             }
         }
     }

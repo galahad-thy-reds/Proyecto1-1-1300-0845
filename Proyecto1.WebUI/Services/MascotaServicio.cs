@@ -27,7 +27,7 @@ namespace Proyecto1.WebUI.Services
         /// <param name="mascota"></param>
         public void Actualizar(Mascota mascota)
         {
-            var mascotaActual = Buscar(mascota.CedulaContacto);
+            var mascotaActual = ObtenerMascota(mascota.CedulaContacto!);
 
             if (mascotaActual != null)
             {
@@ -46,9 +46,9 @@ namespace Proyecto1.WebUI.Services
         /// </summary>
         /// <param name="criterio"></param>
         /// <returns>Mascota encontrada</returns>
-        public Mascota Buscar(string criterio)
+        public Mascota ObtenerMascota(string criterio)
         {
-            Mascota mascota = _mascotas.FirstOrDefault(m => m.CedulaContacto == criterio);
+            Mascota mascota = _mascotas.FirstOrDefault(m => m.CedulaContacto == criterio)!;
             return mascota;
 
         }
@@ -75,6 +75,24 @@ namespace Proyecto1.WebUI.Services
         public IEnumerable<Mascota> Listar()
         {
             return _mascotas;
+        }
+        /// <summary>
+        /// Metodo para buscar mascotas por un criterio de busqueda
+        /// </summary>
+        /// <param name="criterioBusqueda"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public IEnumerable<Mascota> Buscar(string criterioBusqueda)
+        {
+            if (string.IsNullOrWhiteSpace(criterioBusqueda))
+                return _mascotas;
+            else
+                return _mascotas.Where(m => m.CedulaContacto!.Contains(criterioBusqueda) ||
+                                           m.Especie!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase) ||
+                                           m.Raza!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase) ||
+                                           m.Color!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase) ||
+                                           m.CorreoContacto!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase) ||
+                                           m.TelefonoContacto!.Contains(criterioBusqueda));
         }
     }
 }
