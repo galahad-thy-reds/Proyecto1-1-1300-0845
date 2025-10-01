@@ -41,11 +41,11 @@ namespace Proyecto1.WebUI.Models
         /// Metodo para calcular el precio final del procedimiento con un impuesto del 15%
         /// </summary>
         /// <returns>PrecioFinal: Precio final del procedimiento con un impuesto del 15%</returns>
-        public double PrecioFinal()
+        public double PrecioFinal(double impuesto = 1.13)
         {
             if (TipoProcedimiento is not null)
             {
-                return TipoProcedimiento.Precio * 1.13;
+                return TipoProcedimiento.Precio * impuesto;
             }
 
             return 0;
