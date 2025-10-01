@@ -6,9 +6,9 @@
 
 <h1>Delete</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Está seguro que desea eliminar este Cliente?</h3>
 <div>
-    <h4>Cliente</h4>
+    <h4>Datos del Cliente</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -63,7 +63,7 @@
     
     <form asp-action="Delete">
         @Html.Hidden("cedula", Model.Cedula)
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
         <a asp-action="Index">Volver a lista de clientes</a>
     </form>
 </div>

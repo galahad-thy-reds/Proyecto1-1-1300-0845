@@ -10,11 +10,11 @@
     <a asp-action="Create">Agregar Procedimiento</a>
 </p>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Search">
-            <div class="form-group">
-                <input name="criterioBusqueda" class="form-control me-1" type="search" placeholder="Buscar" />
+<div class="row mb-3">
+    <div class="col-md-5">
+        <form asp-action="Search" class="input-group">
+            <input name="criterioBusqueda" class="form-control me-1" type="search" placeholder="Buscar por Cedula, Nombre, Procedimiento o Estado" />
+            <div class="input-group-append">
                 <button type="submit" value="Buscar" class="btn btn-primary">Buscar</button>
             </div>
         </form>
@@ -40,6 +40,9 @@
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th>
+                Precio
+            </th>
+            <th>
                 Precio final
             </th>
             <th></th>
@@ -62,6 +65,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @String.Format("{0:0.00}", item.TipoProcedimiento!.Precio)
             </td>
             <td>
                 @String.Format("{0:0.00}", item.PrecioFinal())

@@ -82,7 +82,9 @@ namespace Proyecto1.WebUI.Services
                 return _procedimientos;
             else
                 return _procedimientos.Where(p => p.CedulaContacto!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase) ||
-                                                  p.NombreMascota!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase));
+                                                  p.NombreMascota!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase) ||
+                                                  p.TipoProcedimiento!.Nombre!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase) ||
+                                                  p.Estado!.Contains(criterioBusqueda, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

@@ -11,9 +11,6 @@
     <h4>Procedimiento</h4>
     <hr />
     <dl class="row">
-        <dd class="col-sm-10" hidden="hidden">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CedulaContacto)
         </dt>
@@ -38,10 +35,23 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TipoProcedimiento!.Nombre)
         </dd>
+        <dt class="col-sm-2">
+            Precio
+        </dt>
+        <dd class="col-sm-10">
+            @String.Format("{0:0.00}", Model.TipoProcedimiento!.Precio)
+        </dd>
+        <dt class="col-sm-2">
+            Precio Final
+        </dt>
+        <dd class="col-sm-10">
+            @String.Format("{0:0.00}",Model.PrecioFinal())
+        </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        @Html.Hidden("id", Model.Id)
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> | 
+        <a asp-action="Index">Volver a la lista de Procedimiento</a>
     </form>
 </div>

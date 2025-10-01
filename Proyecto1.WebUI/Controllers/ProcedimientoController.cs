@@ -99,7 +99,6 @@ namespace Proyecto1.WebUI.Controllers
         public ActionResult Delete(string id)
         {
             var procedimiento = _procedimientoServicio.ObtenerProcedimiento(id);
-            _procedimientoServicio.Eliminar(procedimiento);
             return View(procedimiento);
         }
 
@@ -110,6 +109,8 @@ namespace Proyecto1.WebUI.Controllers
         {
             try
             {
+                var procedimiento = _procedimientoServicio.ObtenerProcedimiento(id);
+                _procedimientoServicio.Eliminar(procedimiento);
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -10,11 +10,11 @@
     <a asp-action="Create">Agregar Mascota</a>
 </p>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Search">
-            <div class="form-group">
-                <input name="criterioBusqueda" class="form-control me-1" type="search" placeholder="Buscar" />
+<div class="row mb-3">
+    <div class="col-md-5">
+        <form asp-action="Search" class="input-group">
+            <input name="criterioBusqueda" class="form-control me-1" type="search" placeholder="Buscar por Cedula, Especie, Raza, Color, Correo o Telefono" />
+            <div class="input-group-append">
                 <button type="submit" value="Buscar" class="btn btn-primary">Buscar</button>
             </div>
         </form>
