@@ -49,7 +49,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="ContactoPreferido" class="control-label"></label>
-                <input asp-for="ContactoPreferido" class="form-control" />
+                <select asp-for="ContactoPreferido" class="form-control">
+                    <option value="Llamada">Llamada</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                </select>
                 <span asp-validation-for="ContactoPreferido" class="text-danger"></span>
             </div>
             <div class="form-group mt-3">

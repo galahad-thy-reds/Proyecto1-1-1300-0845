@@ -37,9 +37,9 @@ namespace Proyecto1.WebUI.Models
         #endregion
         #region Metodos
         /// <summary>
-        /// Metodo para calcular el precio final del procedimiento con un impuesto del 15%
+        /// Metodo para calcular el precio final del procedimiento con un impuesto del 13%
         /// </summary>
-        /// <returns>PrecioFinal: Precio final del procedimiento con un impuesto del 15%</returns>
+        /// <returns>PrecioFinal: Precio final del procedimiento con un impuesto del 13%</returns>
         public double PrecioFinal(double impuesto = 1.13)
         {
             if (TipoProcedimiento is not null)
