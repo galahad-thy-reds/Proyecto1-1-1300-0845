@@ -27,7 +27,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" />
+                <select asp-for="Estado" class="form-control">
+                    <option value="En Proceso">En Proceso</option>
+                    <option value="Facturado">Facturado</option>
+                    <option value="Agendado">Agendado</option>
+                </select>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
             <div class="form-group">
