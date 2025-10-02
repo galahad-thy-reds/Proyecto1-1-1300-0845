@@ -1,5 +1,4 @@
-﻿using Humanizer;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto1.WebUI.Models
@@ -15,25 +14,25 @@ namespace Proyecto1.WebUI.Models
         /// <summary>
         /// Cedula del contacto que solicita el procedimiento
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Por favor, digite la cedula del contacto")]
         [DisplayName("Cedula Contacto")]
         public string? CedulaContacto { get; set; }
         /// <summary>
         /// Nombre de la mascota a la que se le realizara el procedimiento
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Por favor, indique el nombre de la mascota")]
         [DisplayName("Nombre Mascota")]
         public string? NombreMascota { get; set; }
         /// <summary>
         /// Tipo de consulta a realizar
         /// </summary>
-        [Required]
-        [DisplayName("Tipo Consulta")]
+        [Required(ErrorMessage = "Por favor, seleccione un tipo de procedimiento")]
+        [DisplayName("Tipo Procedimiento")]
         public TipoProcedimiento? TipoProcedimiento { get; set; }
         /// <summary>
         /// Estado del procedimiento (en proceso, facturado, agendado)
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Por favor, seleccione un estado del procedimiento")]
         public string? Estado { get; set; }
         #endregion
         #region Metodos
